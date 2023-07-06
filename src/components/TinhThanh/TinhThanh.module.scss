@@ -1,0 +1,24 @@
+.list-tinhthanh {
+    display: flex;
+    gap: 10px;
+
+    li {
+        padding: 15px;
+        border-radius: 10px;
+        background-color: red;
+        cursor: pointer;
+    }
+}
+
+.option-tinhthanh {
+    border-radius: 8px;
+    margin-left: 10px;
+    padding: 0 10px;
+    background: #00C056;
+    color: #fff;
+
+    option {
+        background: #fff;
+        color: #000;
+    }
+}

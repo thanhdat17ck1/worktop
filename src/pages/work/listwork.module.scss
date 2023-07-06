@@ -1,0 +1,186 @@
+@import "../../scss/style.scss";
+
+.box {
+    background-color: #F2FBF6;
+    margin-bottom: 15px;
+    display: flex;
+    padding: 15px;
+    gap: 16px;
+    border-radius: 6px;
+
+    .img {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+    }
+
+    
+}
+
+.box-info {
+    display: flex;
+    width: calc(100% - 100px);
+    transition: all .2s;
+    cursor: pointer;
+    &:hover {
+        .title {
+            color: #5ad30a;
+        }
+    }
+
+    &__left {
+        width: 80%;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title {
+            font-size: 1.8rem;
+        }
+
+        .companyName {
+            font-size: 1.4rem;
+        }
+
+        .label-content {
+            display: flex;
+            gap: 8px;
+            font-size: 1.4rem;
+
+            label {
+                background-color: #E9EAEC;
+                padding: 5px;
+                border-radius: 4px;
+            }
+        }
+
+        .time-remaining {
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+
+    &__right {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+        p, span {
+            display: block;
+        }
+        span {
+            padding: 12px;
+            background: #5ad30a;
+            border-radius: 8px;
+            // width: 80px;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+        .wage {
+            font-size: 1.8rem;
+            color: #5ad30a;
+        }
+        
+    }
+}
+
+.job-body {
+    background-color: #fff;
+    padding: 15px;
+    display: flex;
+
+    &__left {
+        width: 75%;
+        padding-right: 15px;
+    }
+
+    &__right {
+        width: 25%;
+       
+        .interested {
+            width: 100%;
+            position: sticky;
+            top: 80px;
+            left: 0;
+        }
+        h3 {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    
+    li {
+        padding: 6px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        &:first-child, &:last-child {
+            background-color: #EEEEEE;
+        }
+    }
+    .active {
+        background-color: #00B14F;
+        color: #FFF;
+    }
+}
+
+.banner {
+    background: url("https://static.topcv.vn/v4/image/search-job/bg-search-left-opacity.png"),url("https://static.topcv.vn/v4/image/search-job/bg-search-right.png"),linear-gradient(90deg,#212f3f,#00b14f);
+    background-position: 0 0,100% 0,50%;
+    background-repeat: no-repeat;
+    background-size: auto 340px,auto 340px,100% 100%;
+    font-family: Inter,sans-serif;
+    font-style: normal;
+    padding: 24px 24px 24px;
+    display: flex;
+    input {
+        height: 26px;
+        width: 100%;
+        outline: none;
+        border: none;
+        padding-left: 10px;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .search {
+        background-color: #fff;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-right: 10px;
+
+        svg {
+            font-size: 22px;
+        }
+    }
+
+    button {
+        background-color: #00C056;
+        border-radius: 8px;
+        color: #fff;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: .3s;
+        &:hover {
+            background-color: #00b652;
+        }
+    }
+}
