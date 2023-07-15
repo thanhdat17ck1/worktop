@@ -8,24 +8,27 @@ import Request from '../../Request';
 
 const Login = () => {
     const [username, setUsername] = useState("");
-    const [pawssword, setPassword] = useState("");
+    const [password, setPassword] = useState("");
     const [textError, setTextError] = useState("");
     const [showPassword, setShowPassword] = useState(true);
     const navigate = useNavigate();
     const onSubmit = async () => {
+        let data = {
+          "username": username,
+          "password": password
+        }
+        console.log(data);
         try {
-            const res = await axios.post(`${Request.baseUrl}/api/User/Login`, null , {
-                params: {
-                    username: username,
-                    password: pawssword
-                }
-            },{
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: 'Bearer yourAccessToken'
-                }
-              });
-            console.log(res.data.data)
+            
+            const res = await axios.post(`${Request.baseUrl}/api/User/Login`, data, {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer yourAccessToken`
+              }
+            });
+            
+            console.log(res.config.data,"res1")
+            delete res.config.data
             if(res.data.data === 409) {
               setTextError(res.data.message)
             }
@@ -75,7 +78,7 @@ const Login = () => {
         <div className={style['form-group']}>
             <label htmlFor="">Mật khẩu</label>
             <div className={style['input-group']}>
-              <input type={showPassword ? 'password' : 'text'} placeholder='Nhập mật khẩu' onChange={(e) => setPassword(e.target.value)} value={pawssword}/>
+              <input type={showPassword ? 'password' : 'text'} placeholder='Nhập mật khẩu' onChange={(e) => setPassword(e.target.value)} value={password}/>
               <button onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Hiển thị' : 'Ẩn'}</button>
             </div>
         </div>

@@ -13,6 +13,8 @@ import Index from '../../pages/Home';
 import AdminCreateCategory from '../../Admin/pages/category/AdminCreateCategory';
 import HomeAdmin from '../../Admin/pages/Home/HomeAdmin';
 import Register from '../../pages/register/register';
+import ListPost from '../managerClient/ListPost/ListPost';
+import DetailPostByUser from '../../pages/Manager/DetailPostByUser';
 
 // function Menu({ role }) {
 //   const handleLogout = () => {
@@ -47,9 +49,14 @@ const Header = ({token}) => {
               <Link to={'/listwork'}>Việc làm</Link>
             </li>
             {Number(role) === 1 ?
-              <li>
-                <Link to='/work'>Đăng tuyển dụng</Link>
-              </li>
+              <>
+                <li>
+                  <Link to='/work'>Đăng tuyển dụng</Link>
+                </li>
+                <li>
+                  <Link to='/listpost'>Quản lí bài đăng tuyển</Link>
+                </li>
+              </>
               :
               ''
             }
@@ -88,6 +95,8 @@ const Header = ({token}) => {
           Number(role) === 1 ?
           <>
             <Route path="/work" element={<Create Mytoken={token.nameid} />} />
+            <Route path="/listpost" element={<ListPost />} />
+            <Route path="/detailpost/:id" element={<DetailPostByUser />} />
           </>
           :
           ''

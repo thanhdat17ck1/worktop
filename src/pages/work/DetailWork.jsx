@@ -8,6 +8,7 @@ import Request from '../../Request'
 const DetailWork = () => {
     const {id} = useParams()
     const [data, setData] = useState([])
+    const [vitri, setVitri] = useState([])
     // useEffect(() => {
     //     const fetchData = async() => {
     //         let detailPost = await axios.get(`https://localhost:44393/api/post/getdetail?post=${id}`)
@@ -22,7 +23,8 @@ const DetailWork = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${Request.baseUrl}/api/post/getdetail?post=${id}`)
-                setData(response.data);
+                setData(response.data.data);
+                setVitri(response.data.ViTri);
               } catch (error) {
                 console.error(error);
               }
@@ -33,7 +35,7 @@ const DetailWork = () => {
     
   return (
     <div className={style["l-container"]}>
-        <BoxInfoDetail data={data} />
+        <BoxInfoDetail data={data} vitri={vitri} />
       
     </div>
   )

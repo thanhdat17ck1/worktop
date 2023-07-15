@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import TinyMCEEditor from '../../components/TinyMCEEditor';
+import Request from '../../Request';
 
 const Create = ({Mytoken}) => {
   const [frmData, setFrmData] = useState({

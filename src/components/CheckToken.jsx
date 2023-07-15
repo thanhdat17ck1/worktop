@@ -7,7 +7,7 @@ const CheckToken = ({children}) => {
     const token = localStorage.getItem("token_user");
     const navigate = useNavigate();
     const [decodedToken, setDecodedToken] = useState({});
-    const validRoutes = ["work", "category"];
+    const validRoutes = ["work", "category","listpost","detailpost"];
     useEffect(() => {
       try {
         setDecodedToken(jwt_decode(token));
@@ -17,12 +17,21 @@ const CheckToken = ({children}) => {
       } catch (error) {
         console.log('Token không hợp lệ.', validRoutes);
         // navigate('/login');
-
+        let slug = window.location.pathname;
+        if(slug.includes("/")) {
+          slug = slug.split("/")[1]
+          // alert(slug)
+        }
         validRoutes.map((x,index) => {
-          console.log(x,index);
-          if (window.location.pathname === `/${x}`) {
+          // console.log(x,index);
+          if (slug === `${x}`) {
             navigate('/login');
           }
+          // if (slug.includes(x)) { 
+          //   navigate('/login');
+          // } else {
+          //   console.log("false");
+          // }
         })
         
       }

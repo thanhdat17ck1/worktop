@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './boxInfoDetail.module.scss'
+import Request from '../../Request';
+import axios from 'axios';
 
 function formatDate(dateString) {
     var date = new Date(dateString);
@@ -17,10 +19,63 @@ function formatDate(dateString) {
     return formattedDate;
 }
 
-const BoxInfoDetail = ({data}) => {
-    console.log(data,"data");
+
+
+const BoxInfoDetail = ({data, vitri}) => {
+    console.log(data,"data")
+    const [clicked, setClicked] = useState(false)
+    const className = clicked ? 'clicked' : '';
+    const handleUngTuyen = () => {
+        setClicked(!clicked)
+    }
+    const handleNopCv = () => {
+        alert("a")
+    }
+    const handleCancleNopCV = () => {
+        setClicked(!clicked)
+    }
+    const chooseFile = () => {
+        let inputFile = document.getElementById("pdfInput").files[0];
+
+        pdfToByteArray(inputFile, function(byteArray) {
+            let binaryString = "";
+            for (let i = 0; i < byteArray.length; i++) {
+              binaryString += String.fromCharCode(byteArray[i]);
+            }
+        
+            // Convert binary string to base64
+            let base64Data = btoa(binaryString);
+            downloadFileFromBlob(base64Data)
+        });
+    }
+
+    function pdfToByteArray(file, callback) {
+        var reader = new FileReader();
+    
+        reader.onload = function(e) {
+          var arrayBuffer = e.target.result;
+          var byteArray = new Uint8Array(arrayBuffer);
+    
+          callback(byteArray);
+        };
+    
+        reader.readAsArrayBuffer(file);
+      }
+
+      function downloadFileFromBlob(base64Data) {
+        var apiUrl = `${Request.baseUrl}/api/User/DownloadBlob1`;
+      
+        // Gửi byte array bằng Axios
+        axios.post(apiUrl, { pdfData: base64Data, userId: 4, postId: 11 })
+          .then(function(response) {
+            console.log("Byte array sent successfully.");
+          })
+          .catch(function(error) {
+            console.log("Error sending byte array:", error);
+          });
+      }
   return (
-    <div>
+    <div className={style["detail-work"]}>
         {data.map((work) => (
             <>
                 <div>
@@ -49,6 +104,16 @@ const BoxInfoDetail = ({data}) => {
                         </div>
                     </div>
                 </div>
+                <div className={style["bg-white"] + " " + style["p-15"] + " " + style["diachi"]}>
+                    Địa chỉ:
+                    <ul>
+                        {
+                            vitri.map((x, index) => (
+                                <li key={index}>{x.DiaDiem}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
                 <div className={style["bg-white"] + " " + style["p-15"]}>
                     <div className={style["description"]}>
                         <h3>Chi tiết tin tuyển dụng</h3>
@@ -60,7 +125,29 @@ const BoxInfoDetail = ({data}) => {
                         </div>
                     </div>
                 </div>
-                
+                <div>
+                    <h3>Cách thức ứng tuyển</h3>
+                    <div>
+                        <p>Ứng viên nộp hồ sơ trực tuyến bằng cách bấm Ứng tuyển ngay dưới đây.</p>
+                        <div>
+                            <button onClick={handleUngTuyen}>Ứng tuyển ngay</button>
+                            <button>Lưu tin</button>
+                        </div>
+                        <span>Hạn nộp hồ sơ: {formatDate(work.Time_remaining)}</span>
+                    </div>
+                </div>
+                <div className={style["modal-apply-cv"] + " " + style[className]}>
+                    <div className={style["modal-content"]}>
+                        <div>
+                            <h3>Ứng tuyển</h3>
+                        </div>
+                        <div className={style["file"]}>
+                            <input type="file" onChange={chooseFile} id='pdfInput' />
+                            <button onClick={handleNopCv}>Nộp CV</button>
+                            <button onClick={handleCancleNopCV}>Hủy</button>
+                        </div>
+                    </div>
+                </div>
             </>
         ))}
     </div>

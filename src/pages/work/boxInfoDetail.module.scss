@@ -115,4 +115,48 @@
     }
 }
 
+.diachi {
+    margin-bottom: 15px;
 
+    ul {
+        list-style: disc;
+        padding: 0 20px;
+    }
+}
+
+.detail-work {
+    position: relative;
+}
+
+.modal-apply-cv {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #a8dd88;
+    border-radius: 8px;
+    z-index: 9;
+    width: 480px;
+}
+
+.modal-apply-cv.clicked {
+    display: block;
+}
+
+.modal-content {
+    padding: 10px 0;
+
+    h3 {
+        border-bottom: 1px solid #e5e5e5;
+        padding: 10px;
+    }
+
+    .file {
+        padding: 10px;
+
+        input {
+            width: 100%;
+        }
+    }
+}
