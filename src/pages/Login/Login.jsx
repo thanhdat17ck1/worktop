@@ -12,6 +12,7 @@ const Login = () => {
     const [textError, setTextError] = useState("");
     const [showPassword, setShowPassword] = useState(true);
     const navigate = useNavigate();
+    let slug = window.location.pathname;
     const onSubmit = async () => {
         let data = {
           "username": username,
@@ -40,11 +41,17 @@ const Login = () => {
             }
             else {
               localStorage.setItem("token_user", JSON.stringify(res))
-              if(Number(jwt_decode(JSON.stringify(res)).role) !== 0) {
-                navigate('/listwork');
+              if(slug === "/login") {
+                if(Number(jwt_decode(JSON.stringify(res)).role) !== 0) {
+                  navigate('/listwork');
+                }
+                else {
+                  navigate('/category');
+                }
+               
               }
               else {
-                navigate('/category');
+
               }
               setUsername('')
               setPassword('')

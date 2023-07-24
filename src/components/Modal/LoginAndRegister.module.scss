@@ -1,0 +1,75 @@
+.tab-container {
+  background: #fff;
+  width: max-content;
+  padding: 15px;
+  margin: 0 auto;
+  position: fixed;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: fit-content;
+  z-index: 9;
+  border-radius: 10px;
+  width: 350px;
+
+  input {
+    border: 1px solid #eee;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    color: #00B14F;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-bottom: 6px;
+  }
+
+  .button {
+    width: 100%;
+    background-color: #00B14F;
+    color: #fff;
+    height: 40px;
+    border: unset;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+
+  .tab-buttons {
+    button {
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      margin: 15px 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+      &.register {
+        background: #00b14f !important;
+        border: 1px solid #00b14f;
+        color: #fff;
+      }
+      &.login {
+        border: 1px solid #00b14f;
+        color: #00b14f;
+      }
+    }
+  }
+}
+
+.field-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+

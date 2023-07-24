@@ -66,12 +66,12 @@ const Header = ({token}) => {
           <>
             <Route path="/" element={<Index />} />
             <Route path="/work" element={<Create Mytoken={token.nameid} />} />
-            <Route path="/listwork" element={<ListWork Mytoken={token.nameid} />} />
+            <Route path="/listwork" element={<ListWork  />} />
             
           </>
           :
           <>
-            <Route path="/listwork/:id" element={<DetailWork />} />
+            <Route path="/listwork/:id" element={<DetailWork Mytoken={token.nameid}/>} />
           </>
         </>
         }

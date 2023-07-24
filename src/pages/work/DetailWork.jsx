@@ -5,7 +5,7 @@ import style from './detailWork.module.scss'
 import BoxInfoDetail from './BoxInfoDetail'
 import Request from '../../Request'
 
-const DetailWork = () => {
+const DetailWork = ({Mytoken}) => {
     const {id} = useParams()
     const [data, setData] = useState([])
     const [vitri, setVitri] = useState([])
@@ -35,7 +35,7 @@ const DetailWork = () => {
     
   return (
     <div className={style["l-container"]}>
-        <BoxInfoDetail data={data} vitri={vitri} />
+        <BoxInfoDetail data={data} vitri={vitri} Mytoken={Mytoken}/>
       
     </div>
   )

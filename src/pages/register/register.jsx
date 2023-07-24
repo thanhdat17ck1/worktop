@@ -73,9 +73,9 @@ const Register = () => {
           </p>
         </div>
         <div className={style['form-group']}>
-          <label htmlFor="">Họ tên</label>
+          <label htmlFor="">Tên công ty</label>
           <div className={style['input-group']}>
-            <input type="text" placeholder='Nhập họ tên' onChange={(e) => setFullname(e.target.value)} value={fullname} />
+            <input type="text" placeholder='Nhập tên công ty' onChange={(e) => setFullname(e.target.value)} value={fullname} />
           </div>
         </div>
         <div className={style['form-group']}>

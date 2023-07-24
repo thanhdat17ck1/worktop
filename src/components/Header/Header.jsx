@@ -29,7 +29,8 @@ const handleLogout = () => {
 const Header = ({token}) => {
     
    let role = token.role;
-
+   let userId = token.nameid;
+  console.log(userId,"userId");
   return (
     <div>
       {
@@ -79,7 +80,7 @@ const Header = ({token}) => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/listwork" element={<ListWork />} />
-        <Route path="/listwork/:id" element={<DetailWork />} />
+        <Route path="/listwork/:id" element={<DetailWork Mytoken={token}/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {
@@ -95,8 +96,8 @@ const Header = ({token}) => {
           Number(role) === 1 ?
           <>
             <Route path="/work" element={<Create Mytoken={token.nameid} />} />
-            <Route path="/listpost" element={<ListPost />} />
-            <Route path="/detailpost/:id" element={<DetailPostByUser />} />
+            <Route path="/listpost" element={<ListPost userId={userId} />} />
+            <Route path="/detailpost/:id" element={<DetailPostByUser userId={userId} />} />
           </>
           :
           ''

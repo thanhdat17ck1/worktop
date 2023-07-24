@@ -5,6 +5,8 @@ import WorkHome from "../../components/WorkHome/WorkHome";
 import { useState } from "react";
 import axios from "axios";
 import Request from "../../Request";
+import img1 from "../../images/1-C1-346x 577.jpg";
+import img2 from "../../images/3-C1-346x 577.jpg";
 
 const Index = () => {
   const [work, setWork] = useState([]);
@@ -63,6 +65,14 @@ const Index = () => {
           Last
         </li>
       </ul>
+      <div className={style["section-center-banners"]}>
+        <div className={style["item"]}>
+          <img src={img1} alt="" />
+        </div>
+        <div className={style["item"]}>
+          <img src={img2} alt="" />
+        </div>
+      </div>
     </div>
   );
 };

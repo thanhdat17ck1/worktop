@@ -8,3 +8,22 @@
     padding-bottom: 50px;
     padding-top: 42px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-center-banners {
+    display: flex;
+    justify-content: space-between;
+
+    .item {
+        border-radius: 10px;
+        overflow: hidden;
+        width: 49%;
+    }
+}

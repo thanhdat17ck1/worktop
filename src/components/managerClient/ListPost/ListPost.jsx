@@ -5,13 +5,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import Request from '../../../Request';
 
-const ListPost = () => {
+const ListPost = ({Mytoken}) => {
   const [work, setWork] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
+      console.log(Mytoken,"a");
       try {
         const response = await axios.get(
-          `${Request.baseUrl}/api/post/ListPostOfUser?idUser=2&pageindex=1`
+          `${Request.baseUrl}/api/post/ListPostOfUser?idUser=${Mytoken}&pageindex=1`
         );
         setWork(response.data.data);
         // setPageIndex(response.data.TotalPage[0].TotalPages)

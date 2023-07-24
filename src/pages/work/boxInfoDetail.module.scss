@@ -79,14 +79,13 @@
             padding: 12px;
             background: #5ad30a;
             border-radius: 8px;
-            width: 80px;
+            // width: 80px;
             color: #fff;
         }
         .wage {
             font-size: 1.8rem;
             color: #5ad30a;
         }
-        
     }
 }
 
@@ -130,14 +129,17 @@
 
 .modal-apply-cv {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 10vh;
+    left: 0;
     background: #a8dd88;
     border-radius: 8px;
     z-index: 9;
-    width: 480px;
+    right: 0;
+    bottom: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
 }
 
 .modal-apply-cv.clicked {
@@ -159,4 +161,39 @@
             width: 100%;
         }
     }
+}
+
+/* modal.css */
+
+// .modal-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+// }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 4px;
+//   padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.modal-close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

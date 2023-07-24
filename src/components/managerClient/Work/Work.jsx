@@ -44,38 +44,41 @@ const Work = ({works}) => {
   console.log(works,"kk");
   return (
     <>
+    <div className={style['l-container']}>
+      <h3>Danh sách bài đăng tuyển của bạn:</h3>
       {works?.map((work) => (
-        <Link to={`/detailpost/${work.id}`} key={work.id} className={style["box"]}>
-          <div className={style["img"]}>
-            <img
-              src="https://cdn-new.topcv.vn/unsafe/200x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-giai-phap-kinh-doanh-the-he-moi-vnng-640fe72f8540f.jpg"
-              alt=""
-            />
-          </div>
-          <div className={style["box-info"]}>
-            <div className={style["box-info__left"]}>
-              <div>
-                <h3 className={style["title"]}>{work.title}</h3>
-                <p className={style["companyName"]}>{work.fullname}</p>
-              </div>
+          <Link to={`/detailpost/${work.id}`} key={work.id} className={style["box"]}>
+            <div className={style["img"]}>
+              <img
+                src="https://cdn-new.topcv.vn/unsafe/200x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-giai-phap-kinh-doanh-the-he-moi-vnng-640fe72f8540f.jpg"
+                alt=""
+              />
+            </div>
+            <div className={style["box-info"]}>
+              <div className={style["box-info__left"]}>
+                <div>
+                  <h3 className={style["title"]}>{work.title}</h3>
+                  <p className={style["companyName"]}>{work.fullname}</p>
+                </div>
 
-              <div className={style["label-content"]}>
-                <label className="location">{work.TenViTri}</label>
-                <label className={style["time-remaining"]}>
-                  {
-                    HandleDate(work.Time_remaining) === false ? "hết hạn" : (<p>{"còn "}<span>{HandleDate(work.Time_remaining)}</span>{" ngày để ứng tuyển"}</p>)
-                  } 
-                </label>
-                <label className="updateAt">Cập nhật {UpdateAt(work.updateAt)} trước</label>
+                <div className={style["label-content"]}>
+                  <label className={style["time-remaining"]}>
+                    {
+                      HandleDate(work.Time_remaining) === false ? "hết hạn" : (<p>{"còn "}<span>{HandleDate(work.Time_remaining)}</span>{" ngày để ứng tuyển"}</p>)
+                    } 
+                  </label>
+                  <label className="updateAt">Cập nhật {UpdateAt(work.updateAt)} trước</label>
+                </div>
+              </div>
+              <div className={style["box-info__right"]}>
+                <p className={style["wage"]}>{work.wage}</p>
+                <span>{work.SLUngVien} Ứng tuyển</span>
               </div>
             </div>
-            <div className={style["box-info__right"]}>
-              <p className={style["wage"]}>{work.wage}</p>
-              <span>Ứng tuyển</span>
-            </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+    </div>
+      
     </>
   )
 }
