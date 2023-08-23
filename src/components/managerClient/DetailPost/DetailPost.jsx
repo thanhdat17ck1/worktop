@@ -188,7 +188,7 @@ const DetailPost = () => {
                 <>
                     <div>
                         <label htmlFor="">Tiêu đề</label>
-                        <input type="text" placeholder='Tiêu đề' name='title' value={frmData.title} onChange={handleChange} />
+                        <input type="text"  placeholder='Tiêu đề' name='title' value={frmData.title} onChange={handleChange} />
                     </div>
                     <div>
                         <label htmlFor="">Mô tả</label>

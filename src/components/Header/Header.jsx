@@ -15,6 +15,7 @@ import HomeAdmin from '../../Admin/pages/Home/HomeAdmin';
 import Register from '../../pages/register/register';
 import ListPost from '../managerClient/ListPost/ListPost';
 import DetailPostByUser from '../../pages/Manager/DetailPostByUser';
+import GrossToNet from '../../pages/GrossToNet/GrossToNet';
 
 // function Menu({ role }) {
 //   const handleLogout = () => {
@@ -30,7 +31,7 @@ const Header = ({token}) => {
     
    let role = token.role;
    let userId = token.nameid;
-  console.log(userId,"userId");
+   
   return (
     <div>
       {
@@ -48,6 +49,17 @@ const Header = ({token}) => {
           <ul className={style['menu']}>
             <li>
               <Link to={'/listwork'}>Việc làm</Link>
+            </li>
+            <li className={style['has-menu']}>
+              <Link to={'/'}>Công cụ</Link>
+              <div className={style['group-hover']}>
+                <ul>
+                  <li>
+                    <Link to={'/gross-to-net'}>Tính lương GROSS - NET</Link>
+                  </li>
+                </ul>
+              </div>
+              
             </li>
             {Number(role) === 1 ?
               <>
@@ -80,6 +92,7 @@ const Header = ({token}) => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/listwork" element={<ListWork />} />
+        <Route path="/gross-to-net" element={<GrossToNet />} />
         <Route path="/listwork/:id" element={<DetailWork Mytoken={token}/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -96,7 +109,7 @@ const Header = ({token}) => {
           Number(role) === 1 ?
           <>
             <Route path="/work" element={<Create Mytoken={token.nameid} />} />
-            <Route path="/listpost" element={<ListPost userId={userId} />} />
+            <Route path="/listpost" element={<ListPost Mytoken={token.nameid} />} />
             <Route path="/detailpost/:id" element={<DetailPostByUser userId={userId} />} />
           </>
           :

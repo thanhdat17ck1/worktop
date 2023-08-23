@@ -111,7 +111,7 @@
         .interested {
             width: 100%;
             position: sticky;
-            top: 80px;
+            top: 172px;
             left: 0;
         }
         h3 {
@@ -147,6 +147,10 @@
     font-style: normal;
     padding: 24px 24px 24px;
     display: flex;
+    position: sticky;
+    top: 80px;
+    z-index: 9;
+
     input {
         height: 26px;
         width: 100%;

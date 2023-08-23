@@ -7,9 +7,11 @@ import Request from '../../../Request';
 
 const ListPost = ({Mytoken}) => {
   const [work, setWork] = useState([]);
+  const [userId, setUserId] = useState("")
+  
   useEffect(() => {
+    setUserId(Mytoken)
     const fetchData = async () => {
-      console.log(Mytoken,"a");
       try {
         const response = await axios.get(
           `${Request.baseUrl}/api/post/ListPostOfUser?idUser=${Mytoken}&pageindex=1`

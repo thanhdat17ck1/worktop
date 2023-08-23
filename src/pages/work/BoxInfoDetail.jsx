@@ -26,7 +26,7 @@ function formatDate(dateString) {
 }
 
 const BoxInfoDetail = ({ data, vitri, Mytoken }) => {
-  console.log(Mytoken, "Mytoken");
+  console.log(Object.keys(Mytoken).length, "Mytoken");
   const [clicked, setClicked] = useState(false);
   const [role, setRole] = useState(true);
   const className = clicked ? "clicked" : "";
@@ -233,7 +233,7 @@ const BoxInfoDetail = ({ data, vitri, Mytoken }) => {
             </div>
           </div>
 
-          {Object.keys(Mytoken).length === 0 || Mytoken.role === 2 ? (
+          {Object.keys(Mytoken).length === "0" || Mytoken.role === "2" ? (
             <>
               <div>
                 <h3>Cách thức ứng tuyển</h3>
@@ -263,7 +263,7 @@ const BoxInfoDetail = ({ data, vitri, Mytoken }) => {
               </div>
             </>
           ) : (
-            ""
+            "aa"
           )}
 
           {/* <Modal
@@ -281,7 +281,7 @@ const BoxInfoDetail = ({ data, vitri, Mytoken }) => {
           )}
         </>
       ))}
-        <button onClick={downloadFile}>Download File</button>
+        {/* <button onClick={downloadFile}>Download File</button> */}
       <ToastContainer />
     </div>
   );
